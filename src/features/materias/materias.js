@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
-import { borrar } from './materiasSlice'
+import { agregar, borrar } from './materiasSlice'
 import styles from './materias.module.css'
 
 export function Materias() {
@@ -16,8 +16,17 @@ export function Materias() {
 
 
 export function Materia({materia}) {
-    return(<article className = 'materia'>
+    const materias = useSelector(state => state.materias)
+    const dispatch = useDispatch()
+    function handleClick(e) {
+        if (materias.indexOf(materia) > -1) {
+            dispatch(borrar(materia))
+        } else {
+            dispatch(agregar(materia)) 
+        }
+    }
+    return(<div className = 'materia' onClick={handleClick}>
        <h3>{materia.nombre}</h3> 
        <p className = 'materia-content'>{materia.cht}</p>
-    </article>)
+    </div>)
 }

@@ -8,8 +8,8 @@ export const materiasSlice = createSlice({
     name: 'materias',
     initialState,
     reducers: {
-        agregar: (state, action) => state.push(action.payload),
-        borrar: (state, action) => state.filter(materia => materia != action.payload)
+        agregar: (state, action) => [...state, action.payload],
+        borrar: (state, action) => state.filter(materia => materia.id != action.payload.id)
     }
 })
 
