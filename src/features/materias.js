@@ -13,3 +13,11 @@ export function Materias() {
         {renderedMaterias}
     </section>
 }
+
+
+export function Materia({materia}) {
+    return <article className = 'materia' key = {materia.id}>
+       <h3>{materia.nombre}</h3> 
+       <p className = 'materia-content'>{materia.cht}</p>
+    </article>
+}
