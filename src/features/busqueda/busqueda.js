@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux';
-import { agregar, borrar } from '../materias/materiasSlice'
+import React, { useState } from 'react'
 import { Materia } from '../materias/materias'
 import buscarMaterias from './busquedaAPI'
 
 export function Busqueda() {
     const [results, setResults] = useState([])
-    const renderedResult = results.map(result =>
-        <li key = {result.id}>
-            <Materia materia = {result} />
-        </li>
-    )
+    const renderedResult = results.map(result => <Materia materia = {result} key = {result.id}/>)
     async function handleInput(e) {
         setResults(await buscarMaterias(e))
     }
     return(
-        <section className = 'busqueda'>
-            <input name='busqueda' onChange = {handleInput}/>
-            <ul>{renderedResult}</ul> 
-        </section>
+        <div className = 'container p-3'>
+            <input className = "form-control" onChange = {handleInput}/>
+            <div className = 'list-group list-group-radio pt-3'>{renderedResult}</div> 
+        </div>
     )
 }
