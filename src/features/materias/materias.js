@@ -3,14 +3,21 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { agregar, borrar } from './materiasSlice'
 
-export function Materias() {
+export function Materias({cuatri}) {
     const materias = useSelector(state => state.materias)
-    const renderedMaterias = materias.map(materia => 
-        <Materia materia = {materia} key = {materia.id} />
-    )
-    return(<div className = 'list-group list-group-radio'>
+    const renderedMaterias = materias.reduce((acum, materia) => {
+            console.log(materia.cuatri)
+            if (materia.cuatri == cuatri) {
+                acum.push(<Materia materia = {materia} key = {materia.id} />)
+            }
+            return acum
+        }
+    ,[])
+    return(<div className = "container p-2">
+    <h2>{cuatri}</h2>
+    <div className = 'list-group list-group-radio'>
         {renderedMaterias}
-    </div>)
+    </div></div>)
 }
 
 export function Materia({materia}) {

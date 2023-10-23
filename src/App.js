@@ -6,13 +6,19 @@ import { Info } from './features/info/info'
 function App() {
   return (
      <div className = "row">
-        <div className = "sidebar col-2">
+        <div className = "sidebar col-2 border-end p-3">
           <Busqueda />
         </div>
-        <main className = "col">
-          <Materias />
+          <div className = "col">
+            <Materias cuatri = {undefined}/>
+          </div>
+          <div className = "col">
+            <Materias cuatri = {1}/>
+          </div>
+          <div className = "col">
+            <Materias cuatri = {2}/>
+          </div>
           {/* <Info /> */}
-        </main>
       </div>
   );
 }

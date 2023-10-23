@@ -9,7 +9,7 @@ export function Busqueda() {
         setResults(await buscarMaterias(e))
     }
     return(
-        <div className = 'container p-3'>
+        <div>
             <input className = "form-control" onChange = {handleInput}/>
             <div className = 'list-group list-group-radio pt-3'>{renderedResult}</div> 
         </div>
