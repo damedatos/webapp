@@ -6,7 +6,6 @@ import { agregar, borrar } from './materiasSlice'
 export function Materias({cuatri}) {
     const materias = useSelector(state => state.materias)
     const renderedMaterias = materias.reduce((acum, materia) => {
-            console.log(materia.cuatri)
             if (materia.cuatri == cuatri) {
                 acum.push(<Materia materia = {materia} key = {materia.id} />)
             }
