@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = [
-    { id: 2, nombre: 'Aprendizaje Automático', cht: 64}
-]
+const initialState = []
 
 export const materiasSlice = createSlice({
     name: 'materias',

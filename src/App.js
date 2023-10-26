@@ -5,21 +5,19 @@ import { Info } from './features/info/info'
 
 function App() {
   return (
-     <div className = "row">
-        <div className = "sidebar col-2 border-end p-3">
-          <Busqueda />
-        </div>
-          <div className = "col">
-            <Materias cuatri = {undefined}/>
-          </div>
-          <div className = "col">
-            <Materias cuatri = {1}/>
-          </div>
-          <div className = "col">
-            <Materias cuatri = {2}/>
-          </div>
-          {/* <Info /> */}
+    <div className = "row vw-100 vh-100">
+      <Busqueda />
+      <div className = "col">
+        <Materias cuatri = {undefined}/>
       </div>
+      <div className = "col">
+      <Materias cuatri = {1}/>
+      </div>
+      <div className = "col">
+        <Materias cuatri = {2}/>
+      </div>
+      {/* <Info /> */}
+    </div>
   );
 }
 
