@@ -12,9 +12,9 @@ export function Materias({cuatri}) {
             return acum
         }
     ,[])
-    return(<div className = "container p-2">
-    <h2>{cuatri}</h2>
-    <div className = 'list-group list-group-radio'>
+    return(<div className = 'container d-flex flex-column'>
+    <h2>{cuatri ? cuatri : '?'}</h2>
+    <div className = 'list-group gap-1 overflow-scroll'>
         {renderedMaterias}
     </div></div>)
 }
@@ -29,8 +29,8 @@ export function Materia({materia}) {
             dispatch(agregar(materia)) 
         }
     }
-    return(<div className = 'list-group-item rounded' onClick={handleClick}>
-       <h3>{materia.nombre}</h3> 
-       <p className = 'materia-content'>{materia.cht}</p>
+    return(<div className = 'list-group-item justify-content-between rounded border-top d-flex align-items-center' style={{height: 2*materia.cht}} onClick={handleClick}>
+       <p>{materia.nombre}</p> 
+       <small className = 'text-secondary'>{materia.cht}</small>
     </div>)
 }

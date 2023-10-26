@@ -12,9 +12,9 @@ export function Busqueda() {
         )
     }
     return(
-        <div className = 'd-flex flex-column align-items-stretch vh-100 col-2 p-3 border-end'>
+        <div className = 'd-flex flex-column col-2 p-3 border-end vh-100'>
             <input className = "form-control" onChange = {handleInput}/>
-            <div className = 'list-group list-group-radio mt-3 overflow-scroll'>{renderedResult}</div> 
+            <div className = 'list-group gap-1 mt-3 overflow-x-hidden'>{renderedResult}</div> 
         </div>
     )
 }
