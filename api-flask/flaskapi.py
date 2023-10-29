@@ -12,7 +12,7 @@ def buscar():
     results = [materia for materia in materias if busqueda in materia['nombre'].lower()]
     return results
 
-@app.route('api/materias/recomendar', methods=['POST'])
+@app.route('/api/materias/recomendar', methods=['POST'])
 def recomendar():
     data = request.get_json()
     return recomendar(data['materias'])
