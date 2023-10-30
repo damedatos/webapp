@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DndContext } from '@dnd-kit/core';
 
 import { Materias } from './features/materias/materias'
@@ -8,19 +8,22 @@ import { Info } from './features/info/info'
 import { agregar, borrar, mover } from './features/materias/materiasSlice';
 
 function App() {
+  const materias = useSelector(state => state.materias)
   const dispatch = useDispatch()
+  const cuatris = materias.reduce((acum, materia) => {
+    if (materia.cuatri > 2 && !acum.includes(materia.cuatri)) {
+      acum.push(materia.cuatri)
+    }
+    return acum
+  }, [0, 1, 2])
+  const renderedCuatris = cuatris.map(cuatri => <div className="col"><Materias cuatri = {cuatri}/></div>)
   return (
     <div className = "row vw-100 vh-100">
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
-        <div className = "col-2">
-          <Materias cuatri = {0}/>
-        </div>
-        <div className = "col-3">
-        <Materias cuatri = {1}/>
-        </div>
-        <div className = "col-3">
-          <Materias cuatri = {2}/>
+        {renderedCuatris}
+        <div className="col-2 text-body-tertiary">
+          <Materias cuatri = {Math.max(...cuatris) + 1}/>
         </div>
         {/* <Info /> */}
       </DndContext>
