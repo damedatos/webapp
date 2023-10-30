@@ -13,13 +13,13 @@ function App() {
     <div className = "row vw-100 vh-100">
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
-        <div className = "col">
+        <div className = "col-2">
           <Materias cuatri = {0}/>
         </div>
-        <div className = "col">
+        <div className = "col-3">
         <Materias cuatri = {1}/>
         </div>
-        <div className = "col">
+        <div className = "col-3">
           <Materias cuatri = {2}/>
         </div>
         {/* <Info /> */}

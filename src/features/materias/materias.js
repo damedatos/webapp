@@ -39,7 +39,7 @@ export function Materia({materia, id}) {
         style={style}
         ref = {setNodeRef}
         {...listeners} {...attributes}>
-       <p>{materia.nombre}</p> 
-       <small className = 'text-secondary'>{materia.cht}</small>
+       <div>{materia.nombre}</div> 
+       <small className = 'text-secondary ms-3'>{materia.cht}</small>
     </div>)
 }
