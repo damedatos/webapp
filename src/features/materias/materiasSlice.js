@@ -15,6 +15,6 @@ export const materiasSlice = createSlice({
     }
 })
 
-export const { agregar, borrar } = materiasSlice.actions
+export const { agregar, borrar, mover } = materiasSlice.actions
 
 export default materiasSlice.reducer
