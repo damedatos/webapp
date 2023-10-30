@@ -5,7 +5,7 @@ import { DndContext } from '@dnd-kit/core';
 import { Materias } from './features/materias/materias'
 import { Busqueda } from './features/busqueda/busqueda'
 import { Info } from './features/info/info'
-import { mover } from './features/materias/materiasSlice';
+import { agregar, borrar, mover } from './features/materias/materiasSlice';
 
 function App() {
   const dispatch = useDispatch()
@@ -14,7 +14,7 @@ function App() {
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
         <div className = "col">
-          <Materias cuatri = {undefined}/>
+          <Materias cuatri = {0}/>
         </div>
         <div className = "col">
         <Materias cuatri = {1}/>
@@ -29,7 +29,10 @@ function App() {
   function handleDragEnd(event) {
     const {active, over} = event
     if (over) {
-      dispatch(mover({id: active.data.current.materia, cuatri: over.data.current.cuatri}))
+      dispatch(agregar(active.data.current.materia))
+      dispatch(mover({id: active.data.current.materia.id, cuatri: over.data.current.cuatri}))
+    } else {
+      dispatch(borrar(active.data.current.materia))
     }
   }
 }

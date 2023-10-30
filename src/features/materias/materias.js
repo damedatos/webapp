@@ -21,7 +21,7 @@ export function Materias({cuatri}) {
     ,[])
     return(<div className = 'd-flex flex-column vh-100' ref = {setNodeRef}>
     <h2>{cuatri ? cuatri : '?'}</h2>
-    <div className = 'list-group gap-1 overflow-scroll'>
+    <div className = 'list-group gap-1'>
         {renderedMaterias}
     </div></div>)
 }
