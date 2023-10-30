@@ -14,7 +14,7 @@ export function Materias({cuatri}) {
     })
     const renderedMaterias = materias.reduce((acum, materia) => {
             if (materia.cuatri == cuatri) {
-                acum.push(<Materia materia = {materia} key = {materia.id} />)
+                acum.push(<Materia materia = {materia} id = {materia.id} key = {materia.id} />)
             }
             return acum
         }
@@ -26,10 +26,10 @@ export function Materias({cuatri}) {
     </div></div>)
 }
 
-export function Materia({materia}) {
+export function Materia({materia, id}) {
     const materias = useSelector(state => state.materias)
     const {attributes, listeners, setNodeRef, transform} = useDraggable({
-        id: materia.id,
+        id: id,
         data: {
             materia: materia
         }

@@ -3,7 +3,7 @@ import { Materia } from '../materias/materias'
 
 export function Busqueda() {
     const [results, setResults] = useState([])
-    const renderedResult = results.map(result => <Materia materia = {result} key = {result.id}/>)
+    const renderedResult = results.map(result => <Materia materia = {result} id = {-result.id} key = {result.id}/>)
     async function handleInput(e) {
         const input = e.target.value
         setResults(await fetch(`/api/materias/buscar?q=${input}`)

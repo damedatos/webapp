@@ -9,6 +9,8 @@ with open('materias.json', 'r') as json_file:
 @app.route('/api/materias/buscar', methods=['GET'])
 def buscar():
     busqueda = request.args.get('q', '').lower()
+    if (busqueda == ''):
+        return []
     results = [materia for materia in materias if busqueda in materia['nombre'].lower()]
     return results
 
