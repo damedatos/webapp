@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Materia } from '../materias/materias'
 
@@ -18,7 +18,7 @@ export function Busqueda() {
     return(
         <div className = 'd-flex flex-column col-2 p-3 border-end vh-100'>
             <input className = "form-control" onChange = {handleInput}/>
-            <div className = 'list-group gap-1'>
+            <div className = 'list-group gap-1 mt-3'>
                 {renderedRecomendadas}
             </div>
             <div className = 'list-group gap-1 mt-3 overflow-y-scroll overflow-x-hidden mb-auto'>

@@ -1,10 +1,12 @@
 from modelo import recomendador
 from flask import Flask, request
-import json
+import json, csv
 
 app = Flask(__name__)
 with open('materias.json', 'r') as json_file:
     materias = json.load(json_file)
+with open('analytics.csv', 'a') as csv_file:
+    writer = csv.writer(csv_file)
 
 def materiasPorIDs(ids):
     results = [materia for materia in materias if materia['id'] in ids]
@@ -22,7 +24,13 @@ def buscar():
 def recomendar():
     data = request.get_json()
     return materiasPorIDs(recomendador(data['materias']))
-    
+
+@app.route('/api/log', methods=['POST'])
+def logger():
+    data = request.get_json()
+    print(data)
+    writer.writerow(data)
+    return data
 
 if __name__ == '__main__':
     app.run(debug=True, port = 3001)

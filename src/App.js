@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DndContext } from '@dnd-kit/core';
 
@@ -15,14 +15,21 @@ function App() {
     }
     return acum
   }, [0, 1, 2])
-  const renderedCuatris = cuatris.map(cuatri => <div className="col"><Materias cuatri = {cuatri}/></div>)
+  const renderedCuatris = cuatris.map(cuatri => <div className="col"><Materias cuatri = {cuatri} key = {cuatri}/></div>)
+  useEffect(() => {
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState == "hidden") {
+        navigator.sendBeacon("/api/log", JSON.stringify(materias))
+      }
+    })
+  }, [])
   return (
     <div className = "row vw-100 vh-100">
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
         {renderedCuatris}
         <div className="col-1 text-body-tertiary">
-          <Materias cuatri = {Math.max(...cuatris) + 1}/>
+          <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
         </div>
       </DndContext>
     </div>
