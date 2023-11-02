@@ -1,7 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit' 
 
 const initialState = []
-
 export const materiasSlice = createSlice({
     name: 'materias',
     initialState,
@@ -11,7 +10,7 @@ export const materiasSlice = createSlice({
         mover: (state, action) => state.map(materia => {
             if (materia.id != action.payload.id) return materia
             else return { ...materia, cuatri: action.payload.cuatri }
-        })
+        }),
     }
 })
 

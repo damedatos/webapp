@@ -4,14 +4,13 @@ import { DndContext } from '@dnd-kit/core';
 
 import { Materias } from './features/materias/materias'
 import { Busqueda } from './features/busqueda/busqueda'
-import { Info } from './features/info/info'
 import { agregar, borrar, mover } from './features/materias/materiasSlice';
 
 function App() {
   const materias = useSelector(state => state.materias)
   const dispatch = useDispatch()
   const cuatris = materias.reduce((acum, materia) => {
-    if (materia.cuatri > 2 && !acum.includes(materia.cuatri)) {
+    if (!acum.includes(materia.cuatri)) {
       acum.push(materia.cuatri)
     }
     return acum
@@ -22,10 +21,9 @@ function App() {
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
         {renderedCuatris}
-        <div className="col-2 text-body-tertiary">
+        <div className="col-1 text-body-tertiary">
           <Materias cuatri = {Math.max(...cuatris) + 1}/>
         </div>
-        {/* <Info /> */}
       </DndContext>
     </div>
   );
