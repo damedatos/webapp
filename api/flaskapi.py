@@ -5,8 +5,6 @@ import json, csv
 app = Flask(__name__)
 with open('materias.json', 'r') as json_file:
     materias = json.load(json_file)
-with open('analytics.csv', 'a') as csv_file:
-    writer = csv.writer(csv_file)
 
 def materiasPorIDs(ids):
     results = [materia for materia in materias if materia['id'] in ids]
@@ -15,8 +13,6 @@ def materiasPorIDs(ids):
 @app.route('/api/materias/buscar', methods=['GET'])
 def buscar():
     busqueda = request.args.get('q', '').lower()
-    # if (busqueda == ''):
-    #     return []
     results = [materia for materia in materias if busqueda in materia['nombre'].lower()]
     return results
 
@@ -27,10 +23,14 @@ def recomendar():
 
 @app.route('/api/log', methods=['POST'])
 def logger():
-    data = request.get_json()
-    print(data)
-    writer.writerow(data)
-    return data
+    try:
+        data = json.loads(request.data)
+        with open('analytics.csv', 'a') as csv_file:
+            writer = csv.writer(csv_file)
+            writer.writerow(data)
+        return '200'
+    except:
+        return '500'
 
 if __name__ == '__main__':
     app.run(debug=True, port = 3001)

@@ -16,13 +16,24 @@ function App() {
     return acum
   }, [0, 1, 2])
   const renderedCuatris = cuatris.map(cuatri => <div className="col"><Materias cuatri = {cuatri} key = {cuatri}/></div>)
+  function handlePageClose() {
+    if (document.visibilityState == "hidden") {
+      navigator.sendBeacon("/api/log", JSON.stringify(materias))
+    }
+  }    
+  function handleDragEnd(event) {
+    const {active, over} = event
+    if (over) {
+      dispatch(agregar(active.data.current.materia))
+      dispatch(mover({id: active.data.current.materia.id, cuatri: over.data.current.cuatri}))
+    } else {
+      dispatch(borrar(active.data.current.materia))
+    }
+  }
   useEffect(() => {
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState == "hidden") {
-        navigator.sendBeacon("/api/log", JSON.stringify(materias))
-      }
-    })
-  }, [])
+    document.addEventListener("visibilitychange", handlePageClose)
+    return () => document.removeEventListener("visibilitychange", handlePageClose)
+  }, [handlePageClose])
   return (
     <div className = "row vw-100 vh-100">
       <DndContext onDragEnd = {handleDragEnd}>
@@ -33,16 +44,7 @@ function App() {
         </div>
       </DndContext>
     </div>
-  );
-  function handleDragEnd(event) {
-    const {active, over} = event
-    if (over) {
-      dispatch(agregar(active.data.current.materia))
-      dispatch(mover({id: active.data.current.materia.id, cuatri: over.data.current.cuatri}))
-    } else {
-      dispatch(borrar(active.data.current.materia))
-    }
-  }
+  )
 }
 
 export default App;
