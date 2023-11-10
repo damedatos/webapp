@@ -35,7 +35,7 @@ function App() {
     return () => document.removeEventListener("visibilitychange", handlePageClose)
   }, [handlePageClose])
   return (
-    <div className = "row vw-100 vh-100">
+    <div className = "row vw-100 vh-100 overflow-hidden">
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
         {renderedCuatris}

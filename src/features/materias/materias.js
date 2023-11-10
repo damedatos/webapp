@@ -17,9 +17,9 @@ export function Materias({cuatri}) {
             return acum
         }
     ,[])
-    return(<div className = 'd-flex flex-column vh-100' ref = {setNodeRef}>
+    return(<div className = 'd-flex flex-column h-100 mt-2' ref = {setNodeRef}>
     <h2>{cuatri ? cuatri : '?'}</h2>
-    <div className = 'list-group gap-1'>
+    <div className = 'list-group gap-3'>
         {renderedMaterias}
     </div></div>)
 }
@@ -33,13 +33,13 @@ export function Materia({materia, id}) {
     })
     const style = {
         transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
-        height: 2*materia.cht,
-      };
-    return(<div className = 'list-group-item justify-content-between rounded border d-flex align-items-center'
+        height: id[0] == 'm' ? 2*materia.cht : false,
+    }
+    return(<div className = {(id[0] == 'r' ? 'active ' : '') + 'list-group-item justify-content-between rounded border d-flex align-items-center'}
         style={style}
         ref = {setNodeRef}
         {...listeners} {...attributes}>
        <div>{materia.nombre}</div> 
-       <small className = 'text-secondary ms-3'>{materia.cht}</small>
+       <small className = 'text-secondary'>{materia.cht}</small>
     </div>)
 }

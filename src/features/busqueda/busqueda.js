@@ -16,12 +16,12 @@ export function Busqueda() {
         )
     }
     return(
-        <div className = 'd-flex flex-column col-2 p-3 border-end vh-100'>
+        <div className = 'd-flex flex-column col-2 p-3 border-end h-100 secondary'>
             <input className = "form-control" onChange = {handleInput}/>
-            <div className = 'list-group gap-1 mt-3'>
+            <div className = 'list-group gap-2 mt-3'>
                 {renderedRecomendadas}
             </div>
-            <div className = 'list-group gap-1 mt-3 overflow-y-scroll overflow-x-hidden mb-auto'>
+            <div className = 'list-group gap-2 mt-3 overflow-y-scroll overflow-x-hidden mb-auto'>
                 {renderedBusqueda}
             </div>
             <hr className='mt-3 mb-3'></hr>
