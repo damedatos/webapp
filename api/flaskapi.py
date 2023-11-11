@@ -1,8 +1,13 @@
 from modelo import recomendador
+from werkzeug.middleware.proxy_fix import ProxyFix
 from flask import Flask, request
 import json, csv
 
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
+
 with open('materias.json', 'r') as json_file:
     materias = json.load(json_file)
 
@@ -33,4 +38,4 @@ def logger():
         return '500'
 
 if __name__ == '__main__':
-    app.run(debug=True, port = 3001)
+    app.run(debug=True, port = 8000)
