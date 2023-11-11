@@ -1,6 +1,18 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { useDroppable, useDraggable } from '@dnd-kit/core';
+const emoji = {
+    'Analisis': '&#128200;',
+    'Algebra': '&#128290;',
+    'Algoritmos': '&#128187;',
+    'IA': '&#129504;',
+    'Estadistica': '&#128302;',
+    'Operativa': '&#128224;',
+    'Fisica': '&#127756;',
+    'Quimica': '&#129514;',
+    'Biologia': '&#127793;',
+    'Geo': '&#127758;',
+}
 
 export function Materias({cuatri}) {
     const materias = useSelector(state => state.materias)
@@ -35,11 +47,14 @@ export function Materia({materia, id}) {
         transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
         height: id[0] == 'm' ? 2*materia.cht : false,
     }
-    return(<div className = {(id[0] == 'r' ? 'active ' : '') + 'list-group-item justify-content-between rounded border d-flex align-items-center'}
+    return(<div className = {(id[0] == 'r' ? 'active ' : '') + 'list-group-item card border'}
         style={style}
         ref = {setNodeRef}
         {...listeners} {...attributes}>
-       <div>{materia.nombre}</div> 
-       <small className = 'text-secondary'>{materia.cht}</small>
+            <div className='card-body'>
+                <div className='text-secondary'>{'CHT: ' + materia.cht}</div>
+                <div className='card-title'>{materia.nombre}</div> 
+                <div className = 'card-subtitle' dangerouslySetInnerHTML={{ __html: materia.tags.map(tag => emoji[tag]).join(' ') }}></div>
+            </div>
     </div>)
 }

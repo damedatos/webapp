@@ -48,7 +48,7 @@ function App() {
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
         {esVisible? <Recomendar /> : null}
-        <button className='col flex-grow-0 btn dropdown-toggle' onClick={handleDropend}></button>
+        <button className='col flex-grow-0 btn dropdown-toggle border-end' onClick={handleDropend}></button>
         {renderedCuatris}
         {esVisible? null : <div className="col-1 text-body-tertiary">
           <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>

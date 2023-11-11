@@ -1,4 +1,5 @@
-materias.json
+**/materias.json
+**/analytics.csv
 
 __pycache__
 
@@ -23,3 +24,4 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
