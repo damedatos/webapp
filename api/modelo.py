@@ -1,4 +1,7 @@
-# MODELO DE PRUEBAS
+#
+#   MODELO DE PRUEBAS
+#   NO SE USA EN PROD
+#
 import random
 
 def recomendador(materias):
