@@ -1,6 +1,6 @@
 import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit';
 import materiasReducer, { agregar } from '../features/materias/materiasSlice'
-import recomendadasReducer, { recomendar } from '../features/busqueda/busquedaSlice'
+import recomendadasReducer, { recomendar } from '../features/recomendar/recomendarSlice'
 
 const recomendarListener = createListenerMiddleware()
 recomendarListener.startListening({
