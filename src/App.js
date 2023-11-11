@@ -44,7 +44,7 @@ function App() {
   }, [handlePageClose])
   
   return (
-    <div className = {'row vw-100 vh-100 overflow-hidden p-1' + (esVisible ? ' dropstart':' dropend')}>
+    <div className = {'row vw-100 vh-100 p-1 overflow-x-hidden' + (esVisible ? ' dropstart':' dropend')}>
       <DndContext onDragEnd = {handleDragEnd}>
         <Busqueda />
         {esVisible? <Recomendar /> : null}

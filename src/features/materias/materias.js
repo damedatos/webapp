@@ -16,24 +16,32 @@ const emoji = {
 
 export function Materias({cuatri}) {
     const materias = useSelector(state => state.materias)
+    const renderedMaterias = materias.reduce((acum, materia) => {
+        if (materia.cuatri == cuatri) {
+            acum.push(<Materia materia = {materia} id = {'m' + materia.id} key = {materia.id} />)
+        }
+        return acum
+    },[])
+    const cht = materias.reduce((acum, materia) => {
+        if (materia.cuatri == cuatri) {
+            acum += materia.cht
+        }
+        return acum
+    }
+    , 0)
     const {setNodeRef} = useDroppable({
-        id: cuatri,
+    id: cuatri,
         data: {
             cuatri: cuatri
         }
     })
-    const renderedMaterias = materias.reduce((acum, materia) => {
-            if (materia.cuatri == cuatri) {
-                acum.push(<Materia materia = {materia} id = {'m' + materia.id} key = {materia.id} />)
-            }
-            return acum
-        }
-    ,[])
-    return(<div className = 'd-flex flex-column h-100 mt-2' ref = {setNodeRef}>
-    <h2>{cuatri ? cuatri : '?'}</h2>
-    <div className = 'list-group gap-3'>
-        {renderedMaterias}
-    </div></div>)
+    return(<div className = 'd-flex flex-column h-100 pt-2' ref = {setNodeRef}>
+        <h2>{cuatri ? cuatri : '?'}</h2>
+        <div className = 'list-group gap-3 mb-auto'>
+            {renderedMaterias}
+        </div>
+        <div className='text-end'>{'CHT: ' + cht}</div>
+    </div>)
 }
 
 export function Materia({materia, id}) {
