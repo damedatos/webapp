@@ -31,7 +31,7 @@ export function Recomendar() {
                 {botonesDep}
             </div>
             <div className='list-group gap-2 overflow-y-scroll overflow-x-hidden mt-3'>
-                {renderedRecomendadas}
+                {renderedRecomendadas.length > 0 ? renderedRecomendadas : <p>No tenes recomendaciones <br></br> ¿Agregaste materias?</p>}
             </div>
         </div>
     )

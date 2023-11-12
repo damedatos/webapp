@@ -1,10 +1,10 @@
-import { configureStore, createListenerMiddleware } from '@reduxjs/toolkit';
-import materiasReducer, { agregar } from '../features/materias/materiasSlice'
+import { configureStore, createListenerMiddleware, isAnyOf } from '@reduxjs/toolkit';
+import materiasReducer, { agregar, borrar } from '../features/materias/materiasSlice'
 import recomendadasReducer, { recomendar } from '../features/recomendar/recomendarSlice'
 
 const recomendarListener = createListenerMiddleware()
 recomendarListener.startListening({
-    actionCreator: agregar,
+    matcher: isAnyOf(agregar, borrar),
     effect: async (action, {getState, dispatch}) => {
         const state = getState()
         if (state.materias.length > 3) {
@@ -19,6 +19,8 @@ recomendarListener.startListening({
                 const recomendadas = await response.json()
                 dispatch(recomendar(recomendadas))
             }
+        } else {
+            dispatch(recomendar([]))
         }
     }
 })
