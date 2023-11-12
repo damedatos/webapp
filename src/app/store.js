@@ -7,7 +7,7 @@ recomendarListener.startListening({
     actionCreator: agregar,
     effect: async (action, {getState, dispatch}) => {
         const state = getState()
-        if (state.materias.length > 3 && state.materias.length % 2 == 0) {
+        if (state.materias.length > 3) {
             const response = await fetch('/api/materias/recomendar', {
                 method: 'POST',
                 headers: {
