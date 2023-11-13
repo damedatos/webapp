@@ -7,8 +7,9 @@ const departamentos = ["DA", "DB", "DC", "DF", "DM", "IC"]
 export function Recomendar() {
     const [filtros, setFiltros] = useState(departamentos)
     const recomendadas = useSelector(state => state.recomendadas.materias)
+    const materias = useSelector(state => state.materias)
     const renderedRecomendadas = recomendadas.reduce((acum, materia) => {
-        if (filtros.includes(materia.dep)) {
+        if (filtros.includes(materia.dep) && !materias.some(m => m.id == materia.id)) {
             acum.push(<Materia materia = {materia} id = {'r' + materia.id} key = {materia.id}/>)
         }
         return acum
