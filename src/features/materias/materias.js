@@ -12,6 +12,7 @@ const emoji = {
     'Quimica': '&#129514;',
     'Biologia': '&#127793;',
     'Geo': '&#127758;',
+    'Fuego': '&#128293;'
 }
 
 export function Materias({cuatri}) {
@@ -55,14 +56,17 @@ export function Materia({materia, id}) {
         transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
         height: id[0] == 'm' ? 2*materia.cht : false,
     }
-    return(<div className = {(id[0] == 'r' ? 'active ' : '') + 'list-group-item card border'}
+    return(<div className = {(materia.recomendada ? 'active ' : '') + 'list-group-item card border'}
         style={style}
         ref = {setNodeRef}
         {...listeners} {...attributes}>
             <div className='card-body'>
-                <div className='text-secondary'>{'CHT: ' + materia.cht}</div>
+                <div className='row justify-content-around'>
+                <div className='text-secondary col'>{'CHT: ' + materia.cht}</div>
+                <div className='col text-end' dangerouslySetInnerHTML={{__html: materia.score > 10 ? emoji['Fuego'] : null}}></div>
+                </div>
                 <div className='card-title'>{materia.nombre}</div> 
-                <div className = 'card-subtitle' dangerouslySetInnerHTML={{ __html: materia.tags.map(tag => emoji[tag]).join(' ') }}></div>
+                <div className = 'card-subtitle' dangerouslySetInnerHTML={{__html: materia.tags.map(tag => emoji[tag]).join(' ')}}></div>
             </div>
     </div>)
 }
