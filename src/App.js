@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DndContext } from '@dnd-kit/core';
+import { DndContext, DragOverlay } from '@dnd-kit/core';
 
-import { Materias } from './features/materias/materias'
+import { Materia, Materias } from './features/materias/materias'
 import { Busqueda } from './features/busqueda/busqueda'
 import { Recomendar } from './features/recomendar/recomendar';
 import { agregar, borrar, mover } from './features/materias/materiasSlice';
@@ -10,6 +10,7 @@ import { visible } from './features/recomendar/recomendarSlice'
 
 function App() {
   const dispatch = useDispatch()
+  const [activeMateria, setActiveMateria] = useState()
   const materias = useSelector(state => state.materias)
   const esVisible = useSelector(state => state.recomendadas.visible)
   const cuatris = materias.reduce((acum, materia) => {
@@ -22,12 +23,17 @@ function App() {
   
   function handleDragEnd(event) {
     const {active, over} = event
+    setActiveMateria(null)
     if (over) {
       dispatch(agregar(active.data.current.materia))
       dispatch(mover({id: active.data.current.materia.id, cuatri: over.data.current.cuatri}))
     } else {
       dispatch(borrar(active.data.current.materia))
     }
+  }
+  function handleDragStart(event) {
+    const {active} = event
+    setActiveMateria(active.data.current.materia)
   }
 
   function handlePageClose() {
@@ -46,7 +52,10 @@ function App() {
   return (
     <div className = 'container-fluid'>
       <div className = {'row' + (esVisible ? ' dropstart':' dropend')}>
-        <DndContext onDragEnd = {handleDragEnd}>
+        <DndContext onDragEnd = {handleDragEnd} onDragStart = {handleDragStart}>
+          <DragOverlay dropAnimation={null}>
+            {activeMateria ? <Materia materia = {activeMateria} id = 'mactiveMateria' key = 'mactiveMateria'/> : null}
+          </DragOverlay>
           <Busqueda />
           {esVisible? <Recomendar /> : null}
           <button className='col flex-grow-0 btn dropdown-toggle border-end' onClick={handleDropend}></button>

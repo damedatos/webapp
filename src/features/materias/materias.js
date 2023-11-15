@@ -19,7 +19,7 @@ export function Materias({cuatri}) {
     const materias = useSelector(state => state.materias)
     const renderedMaterias = materias.reduce((acum, materia) => {
         if (materia.cuatri == cuatri) {
-            acum.push(<Materia materia = {materia} id = {'m' + materia.id} key = {materia.id} />)
+            acum.push(<Materia materia = {materia} id = {'m' + materia.id} key = {'b' + materia.id} />)
         }
         return acum
     },[])
@@ -38,7 +38,7 @@ export function Materias({cuatri}) {
     })
     return(<div className = 'd-flex flex-column h-100 pt-2' ref = {setNodeRef}>
         <h2>{cuatri ? cuatri : '?'}</h2>
-        <div className = 'list-group gap-3 mb-auto'>
+        <div className = 'list-group gap-3 mb-auto overflow-x-hidden'>
             {renderedMaterias}
         </div>
         <div className='text-end'>{'CHT: ' + cht}</div>
@@ -52,12 +52,8 @@ export function Materia({materia, id}) {
             materia: materia
         }
     })
-    const style = {
-        transform: transform ? `translate3d(${transform.x}px, ${transform.y}px, 0)` : undefined,
-        height: id[0] == 'm' ? 2*materia.cht : false,
-    }
     return(<div className = {(materia.recomendada ? 'active ' : '') + 'list-group-item card border'}
-        style={style}
+        style={{height: id[0] == 'm' ? 2*materia.cht : false}}
         ref = {setNodeRef}
         {...listeners} {...attributes}>
             <div className='card-body'>
