@@ -13,9 +13,9 @@ export function Busqueda() {
     }
 
     return(
-        <div className = 'd-flex flex-column col-md-2 h-100 p-3'>
+        <div className = 'd-flex flex-column col-md-2 p-3 vh-100'>
             <input className = 'form-control' onChange = {handleInput} placeholder='&#128270;'/>
-            <div className = 'list-group gap-2 overflow-y-scroll overflow-x-hidden mt-3'>
+            <div className = 'list-group gap-2 mt-3 flex-grow-1 overflow-auto'>
                 {renderedBusqueda}
             </div>
         </div>

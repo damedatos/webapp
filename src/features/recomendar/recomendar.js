@@ -26,12 +26,12 @@ export function Recomendar() {
         }
     }
     return(
-        <div className= 'd-flex flex-column col h-100 p-3'>
+        <div className= 'd-flex flex-column col-md-2 p-3 vh-100'>
             <h4>Filtrar Recomendadas:</h4>
             <div className='btn-group gap-2'>
                 {botonesDep}
             </div>
-            <div className='list-group gap-2 overflow-y-scroll overflow-x-hidden mt-3'>
+            <div className='list-group gap-2 mt-3 flex-grow-1 overflow-auto'>
                 {renderedRecomendadas.length > 0 ? renderedRecomendadas : <p>No tenes recomendaciones <br></br> ¿Agregaste materias?</p>}
             </div>
         </div>

@@ -44,16 +44,18 @@ function App() {
   }, [handlePageClose])
   
   return (
-    <div className = {'row vw-100 vh-100 p-1 overflow-x-hidden' + (esVisible ? ' dropstart':' dropend')}>
-      <DndContext onDragEnd = {handleDragEnd}>
-        <Busqueda />
-        {esVisible? <Recomendar /> : null}
-        <button className='col flex-grow-0 btn dropdown-toggle border-end' onClick={handleDropend}></button>
-        {renderedCuatris}
-        {esVisible? null : <div className="col-1 text-body-tertiary">
-          <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
-        </div>}
-      </DndContext>
+    <div className = 'container-fluid'>
+      <div className = {'row' + (esVisible ? ' dropstart':' dropend')}>
+        <DndContext onDragEnd = {handleDragEnd}>
+          <Busqueda />
+          {esVisible? <Recomendar /> : null}
+          <button className='col flex-grow-0 btn dropdown-toggle border-end' onClick={handleDropend}></button>
+          {renderedCuatris}
+          {esVisible? null : <div className="col-1 text-body-tertiary">
+            <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
+          </div>}
+        </DndContext>
+      </div>
     </div>
   )
 }
