@@ -14,7 +14,7 @@ recomendarListener.startListening({
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ materias: state.materias })
+                body: JSON.stringify({ materias: state.materias, auth: state.auth })
             })
             if (response.ok) {
                 const recomendadas = await response.json()
