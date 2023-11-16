@@ -38,20 +38,28 @@ function App() {
     const {active} = event
     setActiveMateria(active.data.current.materia)
   }
-
   function handlePageClose() {
     if (document.visibilityState == "hidden") {
       navigator.sendBeacon("/api/log", JSON.stringify({materias: materias, auth: auth}))
+      localStorage.setItem("lastMaterias", JSON.stringify(materias))
     }
   }
   function handleDropend() {
     dispatch(visible())
   }
+
   useEffect(() => {
     document.addEventListener("visibilitychange", handlePageClose)
     return () => document.removeEventListener("visibilitychange", handlePageClose)
   }, [handlePageClose])
-  
+  useEffect(() => {
+    const lastMaterias = JSON.parse(localStorage.getItem("lastMaterias"))
+    if (lastMaterias) {
+      console.log(lastMaterias)
+      lastMaterias.map(materia => dispatch(agregar(materia)))
+    }
+  }, [])
+
   return (
     <div className = 'container-fluid'>
       {auth ? <div className = {'row' + (esVisible ? ' dropstart':' dropend')}>
