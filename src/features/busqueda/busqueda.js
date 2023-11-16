@@ -4,6 +4,7 @@ import { Materia } from '../materias/materias'
 export function Busqueda() {
     const [busqueda, setBusqueda] = useState([])
     const renderedBusqueda = busqueda.map(materia => <Materia materia = {materia} id = {'b' + materia.id} key = {'b' + materia.id}/>)
+    renderedBusqueda.sort((mat1, mat2) => mat2.score - mat1.score)
     async function handleInput(e) {
         const input = e.target.value
         setBusqueda(await fetch(`/api/materias/buscar?q=${input}`)

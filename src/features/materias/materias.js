@@ -41,28 +41,32 @@ export function Materias({cuatri}) {
         <div className = 'list-group gap-3 mb-auto overflow-x-hidden'>
             {renderedMaterias}
         </div>
-        <div className='text-end'>{'CHT: ' + cht}</div>
+        {cht > 0 ?
+        <div className = 'row text-center justify-content-around'>
+            <div className='col'>{'CHS: ' + cht /16}</div>
+            <div className='col'>{'CHT: ' + cht}</div>
+        </div> : null}
     </div>)
 }
 
 export function Materia({materia, id}) {
-    const {attributes, listeners, setNodeRef, transform} = useDraggable({
+const {attributes, listeners, setNodeRef} = useDraggable({
         id: id,
         data: {
             materia: materia
         }
     })
-    return(<div className = {(materia.recomendada ? 'active ' : '') + 'list-group-item card border'}
+    return(<div className = {'list-group-item card border bg-light'}
         style={{height: id[0] == 'm' ? 2*materia.cht : false}}
         ref = {setNodeRef}
         {...listeners} {...attributes}>
             <div className='card-body'>
-                <div className='row justify-content-around'>
-                <div className='text-secondary col'>{'CHT: ' + materia.cht}</div>
-                <div className='col text-end' dangerouslySetInnerHTML={{__html: materia.score > 10 ? emoji['Fuego'] : null}}></div>
-                </div>
                 <div className='card-title'>{materia.nombre}</div> 
-                <div className = 'card-subtitle' dangerouslySetInnerHTML={{__html: materia.tags.map(tag => emoji[tag]).join(' ')}}></div>
+                <div className='row justify-content-around'>
+                    <div className='col card-subtitle text-secondary'>{'CHT: ' + materia.cht}</div>
+                    <div className='col text-end' dangerouslySetInnerHTML={{__html: materia.score > 10 ? emoji['Fuego'] : null}}></div>
+                </div>
+                <div className = 'card-text' dangerouslySetInnerHTML={{__html: materia.tags.map(tag => emoji[tag]).join(' ')}}></div>
             </div>
     </div>)
 }
