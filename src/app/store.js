@@ -1,6 +1,7 @@
 import { configureStore, createListenerMiddleware, isAnyOf } from '@reduxjs/toolkit';
 import materiasReducer, { agregar, borrar } from '../features/materias/materiasSlice'
 import recomendadasReducer, { recomendar } from '../features/recomendar/recomendarSlice'
+import authReducer from '../features/auth/authSlice'
 
 const recomendarListener = createListenerMiddleware()
 recomendarListener.startListening({
@@ -26,6 +27,6 @@ recomendarListener.startListening({
 })
 
 export const store = configureStore({
-    reducer: { materias: materiasReducer, recomendadas: recomendadasReducer },
+    reducer: { materias: materiasReducer, recomendadas: recomendadasReducer, auth: authReducer },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().prepend(recomendarListener.middleware)
 })

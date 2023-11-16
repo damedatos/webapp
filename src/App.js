@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { DndContext, DragOverlay } from '@dnd-kit/core';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { DndContext, DragOverlay } from '@dnd-kit/core'
 
 import { Materia, Materias } from './features/materias/materias'
 import { Busqueda } from './features/busqueda/busqueda'
-import { Recomendar } from './features/recomendar/recomendar';
-import { agregar, borrar, mover } from './features/materias/materiasSlice';
+import { Recomendar } from './features/recomendar/recomendar'
+import { Auth } from './features/auth/auth'
+
+import { agregar, borrar, mover } from './features/materias/materiasSlice'
 import { visible } from './features/recomendar/recomendarSlice'
 
 function App() {
   const dispatch = useDispatch()
   const [activeMateria, setActiveMateria] = useState()
+  const auth = useSelector(state => state.auth)
   const materias = useSelector(state => state.materias)
   const esVisible = useSelector(state => state.recomendadas.visible)
   const cuatris = materias.reduce((acum, materia) => {
@@ -51,7 +54,7 @@ function App() {
   
   return (
     <div className = 'container-fluid'>
-      <div className = {'row' + (esVisible ? ' dropstart':' dropend')}>
+      {auth ? <div className = {'row' + (esVisible ? ' dropstart':' dropend')}>
         <DndContext onDragEnd = {handleDragEnd} onDragStart = {handleDragStart}>
           <DragOverlay dropAnimation={null}>
             {activeMateria ? <Materia materia = {activeMateria} id = 'mactiveMateria' key = 'mactiveMateria'/> : null}
@@ -64,8 +67,8 @@ function App() {
             <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
           </div>}
         </DndContext>
-      </div>
-    </div>
+      </div> : <Auth />}
+    </div> 
   )
 }
 
