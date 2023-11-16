@@ -41,7 +41,7 @@ function App() {
 
   function handlePageClose() {
     if (document.visibilityState == "hidden") {
-      navigator.sendBeacon("/api/log", JSON.stringify(materias))
+      navigator.sendBeacon("/api/log", JSON.stringify({materias: materias, auth: auth}))
     }
   }
   function handleDropend() {
