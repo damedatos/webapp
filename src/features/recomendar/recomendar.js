@@ -9,7 +9,7 @@ export function Recomendar() {
     const recomendadas = useSelector(state => state.recomendadas.materias)
     const materias = useSelector(state => state.materias)
     const renderedRecomendadas = recomendadas.reduce((acum, materia) => {
-        if (filtros.includes(materia.dep) && !materias.some(m => m.id == materia.id)) {
+        if (!materias.some(m => m.id == materia.id)) {
             acum.push(<Materia materia = {materia} id = {'r' + materia.id} key = {'r' + materia.id}/>)
         }
         return acum
