@@ -55,7 +55,6 @@ function App() {
   useEffect(() => {
     const lastMaterias = JSON.parse(localStorage.getItem("lastMaterias"))
     if (lastMaterias) {
-      console.log(lastMaterias)
       lastMaterias.map(materia => dispatch(agregar(materia)))
     }
   }, [])

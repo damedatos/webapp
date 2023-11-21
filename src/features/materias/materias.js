@@ -66,7 +66,7 @@ const {attributes, listeners, setNodeRef} = useDraggable({
                     <div className='col card-subtitle text-secondary'>{'CHT: ' + materia.cht}</div>
                     <div className='col text-end' dangerouslySetInnerHTML={{__html: materia.score > 10 ? emoji['Fuego'] : null}}></div>
                 </div>
-                <div className = 'card-text' dangerouslySetInnerHTML={{__html: materia.tags.map(tag => emoji[tag]).join(' ')}}></div>
+                <div className = 'card-text' dangerouslySetInnerHTML={{__html: materia.tags ? materia.tags.map(tag => emoji[tag]).join(' ') : null}}></div>
             </div>
     </div>)
 }
