@@ -29,7 +29,12 @@ function App() {
     setActiveMateria(null)
     if (over) {
       dispatch(agregar(active.data.current.materia))
-      dispatch(mover({id: active.data.current.materia.id, cuatri: over.data.current.cuatri}))
+      dispatch(mover({_id: active.data.current.materia._id, cuatri: over.data.current.cuatri}))
+      if (active.data.current.materia.score > 10) {
+        navigator.sendBeacon("/api/log", JSON.stringify({materias: materias, auth: auth, event: 'score'}))
+      } else if (active.data.current.materia.recomendada) {
+        navigator.sendBeacon("/api/log", JSON.stringify({materias: materias, auth: auth, event: 'recomendada'}))
+      }
     } else {
       dispatch(borrar(active.data.current.materia))
     }
@@ -40,7 +45,7 @@ function App() {
   }
   function handlePageClose() {
     if (document.visibilityState == "hidden") {
-      navigator.sendBeacon("/api/log", JSON.stringify({materias: materias, auth: auth}))
+      navigator.sendBeacon("/api/log", JSON.stringify({materias: materias, auth: auth, event: 'close'}))
       localStorage.setItem("lastMaterias", JSON.stringify(materias))
     }
   }

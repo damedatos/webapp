@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = {materias: [], visible: false}
+const initialState = {materias: [], visible: true}
 
 export const recomendadasSlice = createSlice({
     name: 'recomendadas',

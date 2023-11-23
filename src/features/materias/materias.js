@@ -19,7 +19,7 @@ export function Materias({cuatri}) {
     const materias = useSelector(state => state.materias)
     const renderedMaterias = materias.reduce((acum, materia) => {
         if (materia.cuatri == cuatri) {
-            acum.push(<Materia materia = {materia} id = {'m' + materia.id} key = {'b' + materia.id} />)
+            acum.push(<Materia materia = {materia} id = {'m' + materia._id} key = {'b' + materia._id} />)
         }
         return acum
     },[])
