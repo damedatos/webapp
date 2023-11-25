@@ -67,7 +67,6 @@ function App() {
 
   return (auth ?
     <div className = 'd-flex flex-column container-fluid vh-100'>
-      <Navbutton/>
       <div className = {'row flex-grow-1 overflow-auto' + (esVisible ? ' dropstart':' dropend')}>
       <DndContext onDragEnd = {handleDragEnd} onDragStart = {handleDragStart}>
         <DragOverlay dropAnimation={null}>
@@ -82,6 +81,7 @@ function App() {
         </div>}
       </DndContext>
       </div> 
+      <Navbutton/>
     </div>
   : <Auth />)
 }
