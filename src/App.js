@@ -6,6 +6,7 @@ import { Materia, Materias } from './features/materias/materias'
 import { Busqueda } from './features/busqueda/busqueda'
 import { Recomendar } from './features/recomendar/recomendar'
 import { Auth } from './features/auth/auth'
+import { Navbutton } from './features/navbutton/navbutton'
 
 import { agregar, borrar, mover } from './features/materias/materiasSlice'
 import { visible } from './features/recomendar/recomendarSlice'
@@ -64,26 +65,25 @@ function App() {
     }
   }, [])
 
-  return (
-    auth ?
+  return (auth ?
     <div className = 'd-flex flex-column container-fluid vh-100'>
-        <div className = {'row flex-grow-1 overflow-auto' + (esVisible ? ' dropstart':' dropend')}>
-        <DndContext onDragEnd = {handleDragEnd} onDragStart = {handleDragStart}>
-          <DragOverlay dropAnimation={null}>
-            {activeMateria ? <Materia materia = {activeMateria} id = 'mactiveMateria' key = 'mactiveMateria'/> : null}
-          </DragOverlay>
-          <Busqueda />
-          {esVisible? <Recomendar /> : null}
-          <button className='col flex-grow-0 btn dropdown-toggle border-end' onClick={handleDropend}></button>
-          {renderedCuatris}
-          {esVisible? null : <div className="col-1 text-body-tertiary">
-            <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
-          </div>}
-        </DndContext>
-        </div> 
-        </div>
-      : <Auth />
-  )
+      <Navbutton/>
+      <div className = {'row flex-grow-1 overflow-auto' + (esVisible ? ' dropstart':' dropend')}>
+      <DndContext onDragEnd = {handleDragEnd} onDragStart = {handleDragStart}>
+        <DragOverlay dropAnimation={null}>
+          {activeMateria ? <Materia materia = {activeMateria} id = 'mactiveMateria' key = 'mactiveMateria'/> : null}
+        </DragOverlay>
+        <Busqueda />
+        {esVisible? <Recomendar /> : null}
+        <button className='col flex-grow-0 btn dropdown-toggle border-end' onClick={handleDropend}></button>
+        {renderedCuatris}
+        {esVisible? null : <div className="col-1 text-body-tertiary">
+          <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
+        </div>}
+      </DndContext>
+      </div> 
+    </div>
+  : <Auth />)
 }
 
 export default App;
