@@ -26,7 +26,7 @@ export function Recomendar() {
         }
     }
     return(
-        <div className= 'd-flex flex-column col-md-2 p-3 vh-100'>
+        <div className= 'd-flex flex-column col-md-2 p-3 h-100'>
             <h4>Filtrar Recomendadas:</h4>
             <div className='btn-group-sm'>
                 {botonesDep}

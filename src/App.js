@@ -22,7 +22,7 @@ function App() {
     }
     return acum
   }, [0, 1, 2])
-  const renderedCuatris = cuatris.map(cuatri => <div className="col"><Materias cuatri = {cuatri} key = {cuatri}/></div>)
+  const renderedCuatris = cuatris.map(cuatri => <Materias cuatri = {cuatri} key = {cuatri}/>)
   
   function handleDragEnd(event) {
     const {active, over} = event
@@ -65,8 +65,9 @@ function App() {
   }, [])
 
   return (
-    <div className = 'container-fluid'>
-      {auth ? <div className = {'row' + (esVisible ? ' dropstart':' dropend')}>
+    auth ?
+    <div className = 'd-flex flex-column container-fluid vh-100'>
+        <div className = {'row flex-grow-1 overflow-auto' + (esVisible ? ' dropstart':' dropend')}>
         <DndContext onDragEnd = {handleDragEnd} onDragStart = {handleDragStart}>
           <DragOverlay dropAnimation={null}>
             {activeMateria ? <Materia materia = {activeMateria} id = 'mactiveMateria' key = 'mactiveMateria'/> : null}
@@ -79,8 +80,9 @@ function App() {
             <Materias cuatri = {Math.max(...cuatris) + 1} key = {Math.max(...cuatris) + 1}/>
           </div>}
         </DndContext>
-      </div> : <Auth />}
-    </div> 
+        </div> 
+        </div>
+      : <Auth />
   )
 }
 
