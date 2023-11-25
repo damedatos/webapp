@@ -12,7 +12,7 @@ export function Busqueda() {
         setNuevamateria(<Materia materia = {data} id = {'n' + data._id} key = {'n' + data._id}/>)
         setBusqueda(await fetch(`/api/materias/buscar?q=${input}`)
             .then(res => res.json())
-            // .catch((err) => TODO)
+            // .catch(err => TODO)
         )
     }
     useEffect(() => {handleInput({target: {value: ""}})}, [])
