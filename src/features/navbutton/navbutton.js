@@ -18,7 +18,7 @@ export function Navbutton() {
         window.open("mailto:freireguido2@gmail.com?subject=Feedback sobre dameDatos")
     }
     function handleOnAyuda() {
-        // TODO
+        window.open('dameAyuda.gif')
     }
     return(
       <div className='dropdown position-fixed bottom-0 end-0 mb-2 me-2'>
