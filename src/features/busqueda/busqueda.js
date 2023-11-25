@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Materia } from '../materias/materias'
 
 export function Busqueda() {
@@ -15,12 +15,13 @@ export function Busqueda() {
             // .catch((err) => TODO)
         )
     }
-
+    useEffect(() => {handleInput({target: {value: ""}})}, [])
     return(
         <div className = 'd-flex flex-column col-md-2 p-3 vh-100'>
             <input className = 'form-control' onChange = {handleInput} placeholder='&#128270;'/>
             <div className = 'list-group gap-2 mt-3 flex-grow-1 overflow-x-hidden overflow-y-scroll'>
                 {renderedBusqueda}
+                {renderedBusqueda.length == 0 ? <p className='text-secondary'>Esta materia todavia no esta en la base</p> : null}
                 {nuevaMateria}
             </div>
         </div>

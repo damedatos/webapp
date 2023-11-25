@@ -32,7 +32,7 @@ export function Recomendar() {
                 {botonesDep}
             </div>
             <div className='list-group gap-2 mt-3 flex-grow-1 overflow-auto'>
-                {renderedRecomendadas.length > 0 ? renderedRecomendadas : <p>No tenes recomendaciones <br></br> ¿Agregaste materias?</p>}
+                {renderedRecomendadas.length > 0 ? renderedRecomendadas : <p className='text-secondary'>No tenes recomendaciones <br></br> ¿Agregaste materias?</p>}
             </div>
         </div>
     )

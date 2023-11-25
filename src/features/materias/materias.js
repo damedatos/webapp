@@ -37,7 +37,7 @@ export function Materias({cuatri}) {
         }
     })
     return(<div className = 'd-flex flex-column h-100 pt-2' ref = {setNodeRef}>
-        <h2>{cuatri ? cuatri : '?'}</h2>
+        <h2>{cuatri ? cuatri + 'º cuatri.': '?'}</h2>
         <div className = 'list-group gap-3 mb-auto overflow-x-hidden'>
             {renderedMaterias}
         </div>
