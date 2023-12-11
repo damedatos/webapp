@@ -1,5 +1,20 @@
-import '@/styles/globals.css'
+import Head from 'next/head'
+import Link from 'next/link'
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function MyApp({ Component, pageProps }) {
+    return (<>
+        <Head>
+            <title>Pet Care App</title>
+        </Head>
+        <div className="nav">
+            <Link href="/">
+                <img id="title" src="dD.png" width ="33" height="33"/>
+            </Link>
+        </div>
+        <div className="wrapper grid">
+        <Component {...pageProps} />
+        </div>
+    </>)
 }
+
+export default MyApp
