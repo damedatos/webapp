@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 import { Schema, model } from 'mongoose'
 
 const materiaSchema = new Schema({
@@ -11,6 +12,4 @@ const materiaSchema = new Schema({
     score: Number
 })
 
-const Materia = new model('Materia', materiaSchema)
-
-export default Materia
+export default mongoose.models.Materia || model('Materia', materiaSchema)

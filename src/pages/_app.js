@@ -4,7 +4,7 @@ import Link from 'next/link'
 function MyApp({ Component, pageProps }) {
     return (<>
         <Head>
-            <title>Pet Care App</title>
+            <title>dameDatos</title>
         </Head>
         <div className="nav">
             <Link href="/">
