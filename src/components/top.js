@@ -1,6 +1,6 @@
 export function Top({ userId }) {
-    return(<div className="navbar p-3">
-        <div className="navbar-start">
+    return(<div className="navbar">
+        <div className="hidden sm:block sm:navbar-start">
             <a className="btn btn-ghost text-xl font-extrabold">dameDatos</a>
         </div>
         <div className="navbar-center">

@@ -8,17 +8,19 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 function MyApp({ Component, pageProps }) {
-    return (<>
+    return (<div className="max-w-7xl h-screen flex flex-col mx-auto">
         <Head><title>dameDatos</title></Head>
         <Top/>
-        <div class="w-full flex flex-col sm:flex-row py-3 justify-between">
+        <div className="flex grow flex-col sm:flex-row py-3 overflow-hidden">
             <Left/>
-            <main role="main" className="min-w-7xl mx-3">
-                <Component {...pageProps} />
-            </main>
-            <Right/>
+            <div className="flex grow flex-col sm:flex-row overflow-auto justify-center">
+                <main role="main" className="grow">
+                    <Component {...pageProps} />
+                </main>
+                <Right/>
+            </div>
         </div>
-    </>)
+    </div>)
 }
 
 export default MyApp
