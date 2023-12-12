@@ -1,27 +1,17 @@
 export function Left({ userId }) {
-    return(<div class="w-fixed px-3">
-        <div class="sticky top-0 rounded-xl w-full h-full">
-            <Nav/>
-            <ul class="flex sm:flex-col overflow-hidden content-center">
-                <Materia/>
-            </ul>
-        </div>
+    return(<div class="w-fixed px-3 sticky top-0 rounded-xl h-full">
+        <ul class="flex sm:flex-col overflow-scroll gap-1">
+            <Materia/>
+            <Materia/>
+            <Materia/>
+            <Materia/>
+            <Materia/>
+            <Materia/>
+            <Materia/>
+            <Materia/>
+            <Materia/>
+        </ul>
     </div>)
-}
-
-function Nav({ userId }) {
-    return(<div className="navbar">
-        <div tabIndex={0} role="button" className="dropdown dropdown-end">
-            <span className="btn btn-ghost rounded-full text-xl">gF</span>
-            <ul tabIndex={0} className="z-[1] menu dropdown-content rounded-box shadow mt-3 p-3 gap-3 w-20">
-                <li>Perfil</li>
-                <li>Salir</li>
-            </ul>
-        </div>
-        <div className="form-control me-3">
-            <input type="text" placeholder="Buscar" className="input input-bordered"/>
-        </div>
-    </div>)   
 }
 
 function Materia({ materiaId }) {
@@ -36,3 +26,17 @@ function Materia({ materiaId }) {
         </div>
     </li>)
 }
+
+// export function Left({ userId }) {
+//     return(<div className="w-fixed sticky top-0 rounded-xl sm:px-3 h-full">
+//         <ul className="flex sm:flex-col content-center gap-1 overflow-scroll">
+//             <Materia/>
+//             <Materia/>
+//             <Materia/>
+//             <Materia/>
+//             <Materia/>
+//             <Materia/>
+//             <Materia/>
+//         </ul>
+//     </div>)
+// }

@@ -4,7 +4,6 @@ export default async function handler(req, res) {
     const { nombre } = req.query
     await dbConnect()
     try {
-        // const materias = await Materia.find({nombre: nombre})
         const materias = await Materia.aggregate([
             {$search: {
                 index: "nombre",

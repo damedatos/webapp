@@ -8,7 +8,7 @@ export function Right({ userId }) {
 }
 
 function Noticia({ materiaId }) {
-    return(<li className="card card-primary bg-gray-100 rounded-xl mb-3 w-full">
+    return(<li className="card card-primary bg-neutral-100 rounded-xl mb-3 w-full">
         <div className="card-body mx-auto px-6 lg:py-8">
             <h2 className="card-title">Noticia!</h2>
             <p>Data muy interesante de dameDatos.</p>
