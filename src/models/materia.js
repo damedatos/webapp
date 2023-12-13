@@ -9,7 +9,9 @@ const materiaSchema = new Schema({
     cht: Number,
     tags: [String],
     dep: String,
-    score: Number
+    score: Number,
+    comentarios: [{type: Schema.Types.ObjectId, ref: 'Comentario'}],
+    usuarios: [{type: Schema.Types.ObjectId, ref: 'User'}]
 })
 
 export default mongoose.models.Materia || model('Materia', materiaSchema)

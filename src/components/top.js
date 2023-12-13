@@ -14,8 +14,8 @@ export function Top() {
             <div className="dropdown dropdown-hover">
                 <div tabIndex={0} role="button" className="btn btn-circle text-xl font-extrabold">gF</div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box gap-2">
-                    <li role="button" className="btn" onClick={() => signOut()}>Perfil</li>
-                    <li role="button" className="btn">Salir</li>
+                    <li role="button" className="btn">Perfil</li>
+                    <li role="button" className="btn" onClick={() => signOut()}>Salir</li>
                 </ul>
             </div>}
             {!session &&
