@@ -1,5 +1,5 @@
 export function Right({ userId }) {
-    return(<section className="flex flex-col gap-3 mt-14">
+    return(<section className="hidden sm:flex flex-col gap-3">
         <Noticia/>
         <Noticia/>
         <Noticia/>

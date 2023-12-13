@@ -1,6 +1,6 @@
 export function Left({ userId }) {
-    return(<div className="flex flex-col px-3 max-w-xs">
-        <h1 className="text-3xl font-bold mb-3 px-3">misMaterias</h1>
+    return(<div className="flex flex-col sm:max-w-xs">
+        <h1>misMaterias</h1>
         <ul className="flex sm:flex-col overflow-scroll gap-1">
             <Materia/>
             <Materia/>

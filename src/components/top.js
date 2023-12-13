@@ -23,17 +23,3 @@ export function Top() {
         </div>
     </div>)   
 }
-// {status == "authenticated" &&
-//     <div className="dropdown dropdown-hover">
-//         {session.user.verificado && <div tabIndex={0} role="button" className="btn btn-circle text-xl font-extrabold">gF</div>}
-//         {!session.user.verificado && <div role="button" className="btn btn-primary text-xl font-extrabold">Verificate!</div>}
-//             <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box gap-2">
-//                 <li role="button" className="btn">Perfil</li>
-//                 <li role="button" className="btn" onClick={() => signOut()}>Salir</li>
-//             </ul>
-//     </div>
-// }
-
-// {status != "authenticated" &&
-//     <div role="button" className="btn text-xl font-extrabold" onClick={() => signIn()}>Sumate!</div>
-// }
