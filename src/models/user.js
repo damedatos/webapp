@@ -9,6 +9,8 @@ const userSchema = new Schema({
     email: String,
     image: String,
     emailVerified: null | Date,
+
+    verificacion: null | "constancia" | "verificado",
     iniciales: {
         type: String,
         required: true,
