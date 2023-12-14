@@ -1,11 +1,10 @@
-import dbConnect from '../../../lib/dbConnect'
-import Materia from '../../../models/materia'
+import clientPromise from '@/lib/mongodb'
 
 export default async function handler(req, res) {
     const { nombre } = req.query
-    await dbConnect()
+    const materias = await clientPromise.db("test").collection("materias")
     try {
-        const materias = await Materia.aggregate([
+        const data = await materias.aggregate([
             {$search: {
                 index: "nombre",
                 text: {
@@ -14,7 +13,7 @@ export default async function handler(req, res) {
                 }
             }}
         ])
-        res.status(200).json({ success: true, data: materias })
+        res.status(200).json({ success: true, data: data })
     } catch (e) {
         res.status(400).json({ success: false })
     }
