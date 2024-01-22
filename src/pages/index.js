@@ -6,7 +6,7 @@ export default function Home() {
     <Left/>
     <div className="flex grow flex-col">
       <h1>miFeed</h1>
-      <div className="flex flex-row overflow-scroll gap-3">
+      <div className="flex flex-row overflow-scroll gap-3 scrollbar-hide">
         <div className="flex flex-col grow gap-1">
           <Actividad/>
           <Actividad/>  
