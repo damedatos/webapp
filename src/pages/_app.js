@@ -1,12 +1,17 @@
 import '@/styles/globals.css';
 
-import { Top } from'@/components/top'
-
 import Head from 'next/head'
-import { SessionProvider } from 'next-auth/react'
+import { Top } from'@/components/top'
+import { createPagesBrowserClient } from '@supabase/auth-helpers-nextjs'
+import { SessionContextProvider } from '@supabase/auth-helpers-react'
+import { useState } from 'react';
 
-function MyApp({ Component, pageProps: {session, ...pageProps} }) {
-    return (<SessionProvider session={session}>
+function MyApp({ Component, pageProps }) {
+    const [supabaseClient] = useState(() => createPagesBrowserClient())
+    return (<SessionContextProvider
+            supabaseClient={supabaseClient}
+            initialSession={pageProps.initialSession}
+        >
         <Head><title>dameDatos</title></Head>
         <div className="max-w-7xl h-screen flex flex-col mx-auto p-3">
             <Top/>
@@ -14,7 +19,7 @@ function MyApp({ Component, pageProps: {session, ...pageProps} }) {
                 <Component {...pageProps} />
             </main>
         </div>
-    </SessionProvider>)
+    </SessionContextProvider>)
 }
 
 export default MyApp
