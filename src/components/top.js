@@ -11,13 +11,13 @@ export function Top() {
             <input type="text" placeholder="Buscar" className="input input-bordered"/>
         </div>
         <div className="navbar-end">
-            {user ? <div className="dropdown dropdown-hover">
+            {user ? (<div className="dropdown dropdown-hover">
                     <div tabIndex={0} role="button" className="btn btn-circle text-xl font-extrabold">gF</div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box gap-2">
                         <li role="button" className="btn">Perfil</li>
                         <li role="button" className="btn" onClick={() => signOut()}>Salir</li>
                     </ul>
-                </div> : <Link href="/auth" className="btn text-xl font-extrabold">Sumate!</Link>
+                </div>) : <Link href="/auth" className="btn btn-primary text-xl font-extrabold">Sumate!</Link>
             }
         </div>
     </div>)   
