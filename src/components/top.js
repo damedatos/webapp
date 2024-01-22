@@ -17,7 +17,7 @@ export function Top() {
                         <li role="button" className="btn">Perfil</li>
                         <li role="button" className="btn" onClick={() => signOut()}>Salir</li>
                     </ul>
-                </div> : <Link href="/auth/new-user" className="btn text-xl font-extrabold">Sumate!</Link>
+                </div> : <Link href="/auth" className="btn text-xl font-extrabold">Sumate!</Link>
             }
         </div>
     </div>)   
