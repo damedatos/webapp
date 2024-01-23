@@ -1,13 +1,26 @@
+import { createPagesServerClient } from '@supabase/auth-helpers-nextjs'
+
 import { Right } from '@/components/right'
 import { Left } from '@/components/left'
+import { Postear } from '@/components/postear'
 
-export default function Home() {
+export async function getServerSideProps(ctx) {
+  const supabase = createPagesServerClient(ctx)
+  const {data: {user}} = await supabase.auth.getUser()
+  return {props: {
+    user
+  }}
+}
+
+export default function Home({user}) {
   return (<>
-    <Left/>
+    <Left materias={[]}/>
     <div className="flex grow flex-col">
-      <h1>miFeed</h1>
+      <Postear/>
+      <h1>{user?.id}</h1>
       <div className="flex flex-row overflow-scroll gap-3 scrollbar-hide">
         <div className="flex flex-col grow gap-1">
+          <h1>miFeed</h1>
           <Actividad/>
           <Actividad/>  
           <Actividad/>  

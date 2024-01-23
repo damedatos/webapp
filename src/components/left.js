@@ -1,17 +1,9 @@
-export function Left({ userId }) {
+export function Left({materias}) {
+    const renderedMaterias = materias.map(m => <Materia materia={m} key={m.id}/>)
     return(<div className="flex flex-col sm:max-w-xs">
         <h1>misMaterias</h1>
         <ul className="flex sm:flex-col overflow-scroll gap-1">
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
-            <Materia/>
+            {renderedMaterias}
         </ul>
     </div>)
 }
